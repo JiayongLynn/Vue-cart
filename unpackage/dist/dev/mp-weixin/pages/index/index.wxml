@@ -1,0 +1,1 @@
+<view class="container"><view class="header"><block wx:for="{{dataList}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view class="{{['header-li',index==2?selected:'']}}" style="{{'width:'+(navLength+'%')+';'}}">{{''+item+''}}</view></block></view><view class="content"><view><text class="title">{{title}}</text></view></view></view>

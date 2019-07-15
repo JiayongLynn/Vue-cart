@@ -1,0 +1,38 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "Veeta"
+			}
+		},{
+			"path": "pages/index/test",
+			"style": {
+				"navigationBarTitleText": "接口"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "Veeta",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+			"color": "#7A7E83",
+			"selectedColor": "#3cc51f",
+			"borderStyle": "black",
+			"backgroundColor": "#ffffff",
+			"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/image/list.png",
+				"selectedIconPath":"static/image/listed.png",
+				"text":"商品列表"
+			},{
+				"pagePath": "pages/index/test",
+				"iconPath": "static/image/rili.png",
+				"selectedIconPath":"static/image/rilied.png",
+				"text": "购物车"
+			}]
+	}
+}
