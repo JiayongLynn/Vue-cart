@@ -7365,15 +7365,6 @@ var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "D:\\phpStudy
 
 _vue.default.config.productionTip = false;
 
-var routes = [{
-  path: '/',
-  component: Index },
-
-{
-  path: '/test',
-  component: Test }];
-
-
 _App.default.mpType = 'app';
 
 var app = new _vue.default({

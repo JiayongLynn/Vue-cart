@@ -1,4 +1,7 @@
 <template>
+	<view class="">
+		132
+	</view>
 </template>
 
 <script>

@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "Veeta",
-  "usingComponents": {}
+  "usingComponents": {
+    "my-header": "/components/header"
+  }
 }

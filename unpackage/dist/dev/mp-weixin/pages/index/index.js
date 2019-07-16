@@ -8,40 +8,54 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
-{
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var header = function header() {return __webpack_require__.e(/*! import() | components/header */ "components/header").then(__webpack_require__.bind(null, /*! ../../components/header.vue */ "D:\\phpStudy\\PHPTutorial\\WWW\\VeetaX\\components\\header.vue"));};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import productlist from "../../components/productList.vue"
+var _default = {
   data: function data() {
     return {
       title: 'Hello',
-      dataList: ['推荐', '数码电器', '鞋包', '零食'],
-      selected: 'selected' };
+      dataList: [{ 'path': 'index', 'data': '推荐' }, { 'path': 'index', 'data': '数码电器' }, { 'path': 'index', 'data': '鞋包' }, { 'path': 'index', 'data': '零食' }],
+      productList: [{ 'url': 'http://192.168.1.133/images/Goku.jpg', 'data': '高档自制新款男装晾衣架 2019新款爆款不好看不给钱只要8999997', 'price': '999', 'count': '14666' },
+      { 'url': 'http://192.168.1.133/images/Goku.jpg', 'data': 'iPhone XS', 'price': '999', 'count': '14666' },
+      { 'url': 'http://192.168.1.133/images/Goku.jpg', 'data': 'iPhone XR', 'price': '999', 'count': '14666' },
+      { 'url': 'http://192.168.1.133/images/Goku.jpg', 'data': 'iPhone8', 'price': '999', 'count': '14666' },
+      { 'url': 'http://192.168.1.133/images/Goku.jpg', 'data': 'iPhone X', 'price': '999', 'count': '14666' }] };
+
 
   },
-  computed: {
-    navLength: function navLength() {
-      return 100 / this.dataList.length;
-    } },
+  components: {
+    'myHeader': header },
 
   onLoad: function onLoad() {
 
-  },
-  methods: {} };exports.default = _default;
+  } };exports.default = _default;
 
 /***/ }),
 
