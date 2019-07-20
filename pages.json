@@ -6,9 +6,9 @@
 				"navigationBarTitleText": "Veeta"
 			}
 		},{
-			"path": "pages/index/test",
+			"path": "pages/index/cart",
 			"style": {
-				"navigationBarTitleText": "接口"
+				"navigationBarTitleText": "购物车"
 			}
 		}
 	],
@@ -29,7 +29,7 @@
 				"selectedIconPath":"static/image/listed.png",
 				"text":"商品列表"
 			},{
-				"pagePath": "pages/index/test",
+				"pagePath": "pages/index/cart",
 				"iconPath": "static/image/rili.png",
 				"selectedIconPath":"static/image/rilied.png",
 				"text": "购物车"

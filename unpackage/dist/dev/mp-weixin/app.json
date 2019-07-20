@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/index/test"
+    "pages/index/cart"
   ],
   "subPackages": [],
   "window": {
@@ -23,7 +23,7 @@
         "text": "商品列表"
       },
       {
-        "pagePath": "pages/index/test",
+        "pagePath": "pages/index/cart",
         "iconPath": "static/image/rili.png",
         "selectedIconPath": "static/image/rilied.png",
         "text": "购物车"

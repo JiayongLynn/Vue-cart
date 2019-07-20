@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "Veeta",
   "usingComponents": {
-    "my-header": "/components/header"
+    "my-header": "/components/header",
+    "product-list": "/components/productList"
   }
 }

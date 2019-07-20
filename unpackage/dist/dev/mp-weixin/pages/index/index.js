@@ -8,7 +8,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var header = function header() {return __webpack_require__.e(/*! import() | components/header */ "components/header").then(__webpack_require__.bind(null, /*! ../../components/header.vue */ "D:\\phpStudy\\PHPTutorial\\WWW\\VeetaX\\components\\header.vue"));};
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var header = function header() {return __webpack_require__.e(/*! import() | components/header */ "components/header").then(__webpack_require__.bind(null, /*! ../../components/header.vue */ "D:\\phpStudy\\PHPTutorial\\WWW\\VeetaX\\components\\header.vue"));};var productlist = function productlist() {return __webpack_require__.e(/*! import() | components/productList */ "components/productList").then(__webpack_require__.bind(null, /*! ../../components/productList.vue */ "D:\\phpStudy\\PHPTutorial\\WWW\\VeetaX\\components\\productList.vue"));};var _default =
 
 
 
@@ -18,44 +18,54 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import productlist from "../../components/productList.vue"
-var _default = {
+{
   data: function data() {
     return {
       title: 'Hello',
-      dataList: [{ 'path': 'index', 'data': '推荐' }, { 'path': 'index', 'data': '数码电器' }, { 'path': 'index', 'data': '鞋包' }, { 'path': 'index', 'data': '零食' }],
-      productList: [{ 'url': 'http://192.168.1.133/images/Goku.jpg', 'data': '高档自制新款男装晾衣架 2019新款爆款不好看不给钱只要8999997', 'price': '999', 'count': '14666' },
-      { 'url': 'http://192.168.1.133/images/Goku.jpg', 'data': 'iPhone XS', 'price': '999', 'count': '14666' },
-      { 'url': 'http://192.168.1.133/images/Goku.jpg', 'data': 'iPhone XR', 'price': '999', 'count': '14666' },
-      { 'url': 'http://192.168.1.133/images/Goku.jpg', 'data': 'iPhone8', 'price': '999', 'count': '14666' },
-      { 'url': 'http://192.168.1.133/images/Goku.jpg', 'data': 'iPhone X', 'price': '999', 'count': '14666' }] };
-
+      dataList: [],
+      productData: [] };
 
   },
   components: {
-    'myHeader': header },
+    'myHeader': header,
+    'productList': productlist },
 
-  onLoad: function onLoad() {
+  onLoad: function onLoad() {var _this = this;
+    uni.request({
+      url: 'http://api.apiato.test/v1/product',
+      success: function success(res) {
+        _this.productData = res.data.data;
+      } });
 
-  } };exports.default = _default;
+
+  },
+  methods: {
+    changeList: function changeList(ret) {
+      this.productData = ret;
+    },
+    addCart: function addCart(value, num) {
+      if (num <= 0) {
+        uni.showToast({
+          title: '该商品库存不足,请选购其他商品',
+          mask: true,
+          duration: 2000,
+          image: '../../static/image/cry.png' });
+
+        return;
+      }
+      uni.request({
+        url: 'http://api.apiato.test/v1/cart',
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' },
+
+        data: {
+          'product_id': value,
+          'user_id': 3 } });
+
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

@@ -19,11 +19,10 @@
 var _default =
 {
   name: 'header',
-  props: ['ItemList'],
   data: function data() {
     return {
       current: 0,
-      alist: this.ItemList,
+      alist: [],
       selected: 'selected' };
 
   },
@@ -33,12 +32,25 @@ var _default =
     } },
 
   methods: {
-    navigateto: function navigateto(path, index) {
+    switchType: function switchType(path, index) {var _this = this;
       this.current = index;
-      uni.navigateTo({
-        url: path });
+      uni.request({
+        // url: 'http://www.phalapi.com/?s=Product.GetInfo&type='+path, 
+        url: 'http://api.apiato.test/v1/product?type=' + path,
+        success: function success(res) {
+          _this.$emit('changeData', res.data.data);
+        } });
 
-    } } };exports.default = _default;
+    } },
+
+  mounted: function mounted() {var _this2 = this;
+    uni.request({
+      url: 'http://api.apiato.test/v1/type/product',
+      success: function success(res) {
+        _this2.alist = res.data.data;
+      } });
+
+  } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
