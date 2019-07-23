@@ -25,8 +25,8 @@ export default {
 		switchType(path,index){
 			this.current = index;
 			uni.request({
-				// url: 'http://www.phalapi.com/?s=Product.GetInfo&type='+path, 
-				url: 'http://api.apiato.test/v1/product?type='+path, 
+				url: 'http://www.phalapi.com/?s=Product.GetInfo&type='+path, 
+				// url: 'http://api.apiato.test/v1/product?type='+path, 
 				success: (res) => {
 					this.$emit('changeData',res.data.data);
 				}
@@ -35,7 +35,8 @@ export default {
 	},
 	mounted() {
 		uni.request({
-			url: 'http://api.apiato.test/v1/type/product', 
+			// url: 'http://api.apiato.test/v1/type/product', 
+			url: 'http://www.phalapi.com/?s=ProductType.getList',
 			success: (res) => {
 				this.alist=res.data.data;
 			}

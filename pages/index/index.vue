@@ -8,6 +8,7 @@
 <script>
 	import header from "../../components/header.vue"
 	import productlist from "../../components/productList.vue"
+	import CartList from "./cart.vue"
 	export default {
 		data() {
 			return {
@@ -22,12 +23,18 @@
 	    },
 		onLoad() {
 			uni.request({
-				url: 'http://api.apiato.test/v1/product', 
+				// url: 'http://api.apiato.test/v1/product', 
+				url: 'http://www.phalapi.com/?s=Product.getinfo', 
 				success: (res) => {
 					this.productData=res.data.data;
 				}
 			});
-			
+			uni.request({
+				url: 'http://api.apiato.test/v1/cart', 
+				success: (res) => {
+					this.GlOBAL.setMessageAction(res.data.data);
+				}
+			});
 		},
 		methods:{
 			changeList(ret){
@@ -43,6 +50,8 @@
 					});
 					return;
 				}
+				var cart = this.GlOBAL.state.list;
+				var cartnew = this.GlOBAL;
 				uni.request({
 					url:'http://api.apiato.test/v1/cart',
 					method:'POST',
@@ -52,7 +61,38 @@
 					data:{
 						'product_id':value,
 						'user_id':3
-					}
+					},
+					success:res=>{
+						console.log(res);
+						if(res.data.status == 40000){
+							uni.showToast({
+								title: res.data.msg,
+								mask:true,
+								duration: 2000,
+								image:'../../static/image/cry.png'
+							});
+							return;
+						}
+						var goods = res.data.data.product;
+						var alreadyIndex = cart.findIndex(function (item, index) {
+							return item.id == goods.id;
+						});
+						if(alreadyIndex==-1){
+							var cartIndex = cart.length;
+							// 添加新的商品，并初始化其数量、价格、被选中状态
+							cart.unshift(goods);
+						}else{
+							// 如果商品已存在并且库存足够，数量加1
+							var alreadyGoods = cart[alreadyIndex];
+							var num = alreadyGoods.count,
+							stock = alreadyGoods.sku_num;
+							cartnew.changeListAction(alreadyIndex,++num);
+						}
+						var obj=this.productData.find(function (item) {
+							return item.id == goods.id;
+						});
+						obj.sku_num--;
+					},
 				})
 			}
 		}

@@ -1,25 +1,25 @@
 <template>
 	<view class="container">
 		<view class="cartlist">
-				<view  class="list">
+				<view v-for="(item,index) in cart" :key="index" class="list">
 					<view class="product_thumb">
-								<image :src='item.image_path' mode="widthFix" class="thumbimage"></image>
+								<image :src='item.product.image_path' mode="widthFix" class="thumbimage"></image>
 							</view>
 							<view class="product_info">
-								<view class="product_title">321</view>
+								<view class="product_title">{{item.product.product_name}}</view>
 								<view style="bottom: 0;position: absolute;display: inline-block;">
 									<view class="product_price">
-										￥8888
+										￥{{item.product.price}}
 									</view>
 									<view style="color: #888;font-size: 12px;">
-										88人付款
+										库存:{{item.product.sku_num}}
 									</view>
 							</view>
 							<view class="goods-num">
 								<view class="num-btn btn-add">
 								</view>
 								<view class="show-num">
-									1
+									{{item.count}}
 								</view>
 								<view class="num-btn btn-cut">
 								</view>
@@ -46,20 +46,24 @@
 
 <script>
 	export default {
-		data() {
-			return {
+		name:'cart',
+		data:function() {
+			return{
 				radiocheckbox:'radiocheckbox',
-				isSelect:false
+				isSelect:false,
+				cart:[]
 			}
+				
 		},
 		components: {
 			
 	    },
 		onLoad() {
 			uni.request({
-				url: 'http://api.apiato.test/v1/product', 
+				url: 'http://api.apiato.test/v1/cart', 
 				success: (res) => {
-					this.productData=res.data.data;
+					this.GlOBAL.setMessageAction(res.data.data);
+					this.cart = res.data.data;
 				}
 			});
 		},
@@ -67,8 +71,12 @@
 			allselect:function () {
 				this.isSelect = !this.isSelect;
 			}
-		}
-	
+		},
+		// watch:{
+		// 	a:function(n,o){
+		// 		this.cart=n;
+		// 	}
+		//  }
 	}
 </script>
 

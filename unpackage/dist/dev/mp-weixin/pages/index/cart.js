@@ -8,7 +8,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -56,22 +56,39 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 var _default =
 {
+  name: 'cart',
   data: function data() {
     return {
       radiocheckbox: 'radiocheckbox',
-      isSelect: false };
+      isSelect: false,
+      cart: [] };
+
 
   },
   components: {},
 
 
-  onLoad: function onLoad() {
+  onLoad: function onLoad() {var _this = this;
+    uni.request({
+      url: 'http://api.apiato.test/v1/cart',
+      success: function success(res) {
+        _this.GlOBAL.setMessageAction(res.data.data);
+        _this.cart = res.data.data;
+      } });
 
   },
   methods: {
     allselect: function allselect() {
       this.isSelect = !this.isSelect;
-    } } };exports.default = _default;
+    } }
+
+  // watch:{
+  // 	a:function(n,o){
+  // 		this.cart=n;
+  // 	}
+  //  }
+};exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

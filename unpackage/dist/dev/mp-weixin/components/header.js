@@ -35,8 +35,8 @@ var _default =
     switchType: function switchType(path, index) {var _this = this;
       this.current = index;
       uni.request({
-        // url: 'http://www.phalapi.com/?s=Product.GetInfo&type='+path, 
-        url: 'http://api.apiato.test/v1/product?type=' + path,
+        url: 'http://www.phalapi.com/?s=Product.GetInfo&type=' + path,
+        // url: 'http://api.apiato.test/v1/product?type='+path, 
         success: function success(res) {
           _this.$emit('changeData', res.data.data);
         } });
@@ -45,7 +45,8 @@ var _default =
 
   mounted: function mounted() {var _this2 = this;
     uni.request({
-      url: 'http://api.apiato.test/v1/type/product',
+      // url: 'http://api.apiato.test/v1/type/product', 
+      url: 'http://www.phalapi.com/?s=ProductType.getList',
       success: function success(res) {
         _this2.alist = res.data.data;
       } });
